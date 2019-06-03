@@ -25,6 +25,7 @@ my_ui <- shinyUI(navbarPage(
       
     # Summary of Analysis
     mainPanel(
+      p(strong("Our Data")),
       br("We are working with data from the National Center for Health Statistics (NCHS)"),
       br("This data set contains data on the top leading cause of death and its death rate/age 
           adjusted death rate in each state from 1999 to 2016"),
@@ -38,15 +39,17 @@ my_ui <- shinyUI(navbarPage(
       br("2) How do causes of death (on national and state level) change over time (if any)?"),
       br("3) What are the all time leading causes of death in each state?"),
       br(),
-      img(src = "uw.jpg", width = "800px", height = "200px")
+      img(src = "uw.jpg", width = "900px", height = "150px")
        #plotOutput("distPlot")
-    )
+    ),
+    hr(),
+    print("This webpage was created by students at the University of Washington enrolled in Spring 2019 Info201.")
     ),
 
   
   #Panel for crude leading causes of death by year/state
   tabPanel(
-    p(strong("Leading Causes of Death "))
+    p(strong("Leading Causes of Death"))
   ),
   
   #Panel changes in leading causes of death in each state
