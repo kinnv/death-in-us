@@ -32,6 +32,7 @@ my_ui <- shinyUI(navbarPage(
           p(strong("Contact Us")),
           br("Kin Vong: ", a(href="mailto:klaivong@gmail.com", "klaivong@gmail.com")),
           br("Connor Voelk:"), a(href="mailto:connorvoelk@gmail.com", "connorvoelk@gmail.com"),
+          br(),
           br("Yan Zhe Ong:", a(href="mailto:ongyanzhe@gmail.com", "ongyanzhe@gmail.com")),
           br("Andrew Kats:", a(href="mailto:akats98@gmail.com", "akats98@gmail.com")) 
         ),
@@ -51,7 +52,7 @@ my_ui <- shinyUI(navbarPage(
             causes are most important to address in order to decrease death rate due to these causes."),
         hr(),
         p(strong("Goal Questions:")),
-        br("1) How does adjusting for age (a confounding) change the death rates?"),
+        br("1) How many states have had a specific leading cause of death?"),
         br("2) How do causes of death (on national level) change over time (if any)?"),
         br("3) What are the all time leading causes of death in each state?")
       )
@@ -59,20 +60,50 @@ my_ui <- shinyUI(navbarPage(
     ),
 
   
-  #Panel for crude leading causes of death by year/state
+  #Panel to show histogram that compares how many state have had a specific cause as their leading cause of death per year
   tabPanel(
-    p(strong("Leading Causes of Death"))
-
+    #title of panel
+    p(strong("Causes Per State")),
+    strong("This histogram compares how many states have had a specific cause of death
+           as their leading cause of death per year."),
+    sidebarLayout(
+      sidebarPanel(
+        
+      ),
+      mainPanel(
+        
+      )
+    )
   ),
   
-  #Panel changes in leading causes of death in each state
+  #Panel to show line graph that shows the national deaths by individuals leading causes overtime
   tabPanel(
-    p(strong("Change in Leading Causes of Death"))
+    #title of panel
+    p(strong("National Deaths by Individual Causes Overtime")),
+    strong("This line graph shows the national deaths by individual leading causes of death overtime."),
+    sidebarLayout(
+      sidebarPanel(
+        
+      ),
+      mainPanel(
+        
+      )
+    )
   ),
   
-  #Panel for age adjusted rates
+  #Panel to show map that shows total amount of deaths caused by specific causes of death in each state
   tabPanel(
-    p(strong("Age Adjusted Rates"))
+    #title of panel
+    p(strong("Total Deaths by Specific Causes Per State")),
+    strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
+    sidebarLayout(
+      sidebarPanel(
+        
+      ),
+      mainPanel(
+        
+      )
+    )
   ),
 
   #changes background color
