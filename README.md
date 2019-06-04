@@ -11,8 +11,14 @@ For our final project, we decided to work with a data set created by the Center 
 
 Through our project, we want to answer these three questions for our audience:
 
-1. How does adjusting for age (confounding) change the death rates?
-2. How do causes of death (on national and state level) change over time (if any)?
+1. How many states have had a specific leading cause of death?
+2. How do causes of death (on national) change over time (if any)?
 3. What are the all time leading causes of death in each state? 
 
 ## Webpage Link
+
+***
+##List of what we need to do
+1. Andrew: Create a histogram comparing how many states have a death rate for a specific cause by year 
+2. Yan: Creat a line graph of national deaths for individual causes over time
+3. Connor: Create a map that shows specific cause of death of the total amount of people that died in that state because of that cause.
