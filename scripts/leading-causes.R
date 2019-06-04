@@ -1,1 +1,0 @@
-#This script creates a chart showing leading causes of death by year/state
