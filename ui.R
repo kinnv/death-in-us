@@ -69,7 +69,7 @@ my_ui <- shinyUI(navbarPage(
            causes are most important to address in order to decrease death rate due to these causes."),
         hr(),
         p(strong("Goal Questions:")),
-        br("1) What is the age adjusted death rate for a specific cause of death in a given year?"),
+        br("1) What is the age adjusted death rate in each state for a specific cause of death in a given year?"),
         br("2) How do causes of death (on national level) change over time (if any)?"),
         br("3) What are the regional trends and outliers for different casuses of death in each state?")
         )
@@ -105,18 +105,22 @@ my_ui <- shinyUI(navbarPage(
       mainPanel(
         plotlyOutput("chart"),
         h2(strong("Analysis")),
-        h3("What are the age adjusted death rates for certain causes in each state given a certain year?"),
-        br("This bar chart allows analysis of the age adjusted death rate (per 100,00) for a cause of death for every state in a given year. 
-           This bar chart allows you to compare adjusted death rates for every state for a cause of death in a specific year and allows you 
-           to see the change of age adjusted death rates over time. For example, the age adjusted death rate in Alabama for cancer in 1999 
-           was 211 deaths per 100,000 people. But in 2016, it was down to just 174 deaths per 100,000 people. This can help provide insight 
-           into things like the overall impact of healthcare improvement and how successful improvements of healthcare have been in each individual state."),
+        h3("What is the age adjusted death rate for a cause of death for each state in a given year?"),
+        br("This bar chart allows analysis of the age adjusted death rate (per 100,00) for a cause of death 
+           for every state in a given year. This bar chart allows you to compare adjusted death rates for every 
+           state for a cause of death in a specific year and allows you to see the change of age adjusted death 
+           rates over time. For example, the age adjusted death rate in Alabama for cancer in 1999 was 211 deaths 
+           per 100,000 people. But in 2016, it was down to just 174 deaths per 100,000 people. This can help provide 
+           insight into things like the overall impact of healthcare improvement and how successful improvements of healthcare 
+           have been in each individual state. "),
         hr(),
         p(strong("Where are these numbers coming from?")),
-        br("This chart analyzes age adjusted death rates for the top 10 leading causes of death in every state from 1999 to 2016. The age adjusted death rate 
-           is the death rate for individual causes of death when age as a confounder is considered. The reason why the age adjusted death rate is so much smaller 
-           than the total deaths for these causes in a lot of cases (as you can see in the graph under the National Deaths by Induvial Causes Overtime tab), is 
-           because age is an important factor for a lot of these causes of death. ")
+        br("This chart analyzes age adjusted death rates for the top 10 leading causes of death in every state from 1999 
+           to 2016. The age adjusted death rate is the death rate for individual causes of death when age as a confounder 
+           is considered. The reason why the age adjusted death rate is so much smaller than the total deaths for these 
+           causes in a lot of cases (as you can see in the graph under the National Deaths by Induvial Causes Overtime tab), 
+           is because age is an important factor for a lot of these causes of death. ")
+        
       )
     )
     ),
