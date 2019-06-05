@@ -152,7 +152,6 @@ my_ui <- shinyUI(navbarPage(
                                     "Diabetes" = 10), 
                      selected = 3),
         
-        hr(),
         fluidRow(column(3, verbatimTextOutput("value")))
         
       ),
