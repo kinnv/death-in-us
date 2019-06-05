@@ -2,8 +2,8 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(ggplot2)
-install.packages("devtools")
-devtools::install_github("wmurphyrd/fiftystater")
+#install.packages("devtools")
+#devtools::install_github("wmurphyrd/fiftystater")
 library(fiftystater)
 
 data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv")
@@ -209,18 +209,6 @@ shinyServer(function(input, output) {
               panel.background = element_blank())
       p$labels$fill <- "Relative Percentage of Diabetes Deaths"
     }
-    
-    # p <- ggplot(df, aes(map_id = state)) +
-    #   # map points to the fifty_states shape data
-    #   geom_map(aes(fill=AllCauses), map = fifty_states) 
-    # expand_limits(x = fifty_states$long, y = fifty_states$lat) +
-    # coord_map() +
-    # scale_x_continuous(breaks = NULL) + 
-    #  scale_y_continuous(breaks = NULL) +
-    #  labs(x = "", y = "") +
-    #  theme(legend.position = "bottom", 
-    #        panel.background = element_blank())
-    
     p
   })
 })

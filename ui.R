@@ -83,8 +83,9 @@ my_ui <- shinyUI(navbarPage(
     p(strong("Causes Per State")),
     strong("This bar chart compares age adjusted death rates for 
             every state for specific causes of death in a given year"),
+    hr(),
+    
     sidebarLayout(
-      
       # Creates widget to allow the user to sort by causes of death
       sidebarPanel(
         selectInput(
@@ -113,6 +114,8 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("National Deaths by Individual Causes Overtime")),
     strong("This line graph shows the national deaths by individual leading causes of death overtime."),
+    hr(),
+    
     sidebarLayout(
       sidebarPanel(
         selectInput("chosenCauses",
@@ -130,7 +133,23 @@ my_ui <- shinyUI(navbarPage(
                     step = 1)  
       ),
       mainPanel(
-        plotOutput("lineGraph")
+        plotOutput("lineGraph"),
+        hr(),
+        p(strong("Analysis")),
+        br("Cancer and Heart Diseases are the obvious top two causes of death and both indicate worrying recent trends.
+           Deaths by cancer has been constantly on the rice for the past decade and a half and 
+           this makes the search for a cure even more pressing. Deaths by heart diseases showed a dip throughout the 2000s,
+           but have been back on the rise in this decade."),
+        br("All other causes have generally been on the rise throughout the time period,
+           which does not bode well for American Health.
+           It is interesting to note that Deaths by Stroke also took a dip throughout the whole 2000s,
+           but is back on the rise again this decade, similar to the number of deaths due to heart disease.
+           This confirms what we already know that deaths by heart diseases and stroke is often correlated."),
+        hr(),
+        br(strong("Where are these numbers coming from?")),
+        br("Depending on the date range chosen by the user, the data will change.
+           The user can has delete certain causes that are distorting the graph, for example, cancer and heart diseases,
+           and focus on causes that they are more interested in.")
       )
     )
   ),
@@ -140,6 +159,8 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("Total Deaths by Causes Per State")),
     strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
+    hr(),
+    
     sidebarLayout(
       sidebarPanel(
         radioButtons("radio", label = h3("Cause of Death"),
@@ -157,9 +178,15 @@ my_ui <- shinyUI(navbarPage(
       ),
       mainPanel(
         plotOutput("fifty_map"),
+<<<<<<< HEAD
         h2(strong("Analysis")),
         h3("What are the regional trends and outliers for different casuses of death in each state?"),
         p("This map allows insight to regional trends in cause of death. There are some interesting 
+=======
+        hr(),
+        p(strong("Analysis")),
+        br("This map allows insight to regional trends in cause of death. There are some interesting 
+>>>>>>> 0995b05b925985399c2e17a3d2cc370083916775
           regions that can be seen in each map. For instance, the Suicide Map shows an area just West
           of the middle of the country that has very high suicide rates, once this trend reaches the 
           West coast it stops."),
