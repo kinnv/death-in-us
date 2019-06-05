@@ -13,12 +13,12 @@ library(shinyWidgets)
 library(plotly)
 
 # Read in CSV Data
-deaths <- read.csv("data/NCHS_Leading_Causes_of_Death_United_States.csv")
+data <- read.csv("data/NCHS_Leading_Causes_of_Death_United_States.csv")
 
 # Sorting data by years in descending order (for the select input in the first bar chart)
-attach(deaths) 
-sort_years <- deaths[order(-Year),] 
-detach(deaths) 
+attach(data) 
+sort_years <- data[order(-Year),] 
+detach(data) 
 
 # Define UI for application that draws a histogram
 my_ui <- shinyUI(navbarPage(
@@ -107,10 +107,22 @@ my_ui <- shinyUI(navbarPage(
     strong("This line graph shows the national deaths by individual leading causes of death overtime."),
     sidebarLayout(
       sidebarPanel(
+        selectInput("chosenCauses",
+                    label = "Causes to view:",
+                    choices = unique(data$Cause.Name)[unique(data$Cause.Name) != "All causes"],
+                    selected = unique(data$Cause.Name)[unique(data$Cause.Name) != "All causes"],
+                    multiple = TRUE),
         
+        sliderInput("chosenYears",
+                    "Year",
+                    min = min(data$Year),
+                    max = max(data$Year),
+                    value = c(min(data$Year), max(data$Year)),
+                    sep = "",
+                    step = 1)  
       ),
       mainPanel(
-        
+        plotOutput("lineGraph")
       )
     )
   ),
