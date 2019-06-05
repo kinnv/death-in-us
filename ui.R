@@ -71,7 +71,7 @@ my_ui <- shinyUI(navbarPage(
         p(strong("Goal Questions:")),
         br("1) How many states have had a specific leading cause of death?"),
         br("2) How do causes of death (on national level) change over time (if any)?"),
-        br("3) What are the all time leading causes of death in each state?")
+        br("3) What are the regional trends and outliers for different casuses of death in each state?")
       )
     )
     ), 
@@ -157,8 +157,9 @@ my_ui <- shinyUI(navbarPage(
       ),
       mainPanel(
         plotOutput("fifty_map"),
-        p(strong("Analysis")),
-        br("This map allows insight to regional trends in cause of death. There are some interesting 
+        h2(strong("Analysis")),
+        h3("What are the regional trends and outliers for different casuses of death in each state?"),
+        p("This map allows insight to regional trends in cause of death. There are some interesting 
           regions that can be seen in each map. For instance, the Suicide Map shows an area just West
           of the middle of the country that has very high suicide rates, once this trend reaches the 
           West coast it stops."),
@@ -167,8 +168,8 @@ my_ui <- shinyUI(navbarPage(
            the large states of California and New York have very low relitve percentages of suicides, 
            while the small population of Alaska is quite large."),
         hr(),
-        p(strong("Where are these numbers coming from?")),
-        br("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
+        h3(strong("Where are these numbers coming from?")),
+        p("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
            were added up to get the largest sample available. From these totals a percentage is found 
            for every state regarding each leading cause. For example, the relative percentages for the Suicide Map is found by
            taking the (total suicide deaths of the state) / (total deaths from the state) * 100, 
