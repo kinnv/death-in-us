@@ -2,6 +2,8 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(ggplot2)
+library(maps)
+library(mapproj)
 
 #install.packages("devtools")
 library(devtools)
@@ -11,7 +13,7 @@ if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
 } 
 library(fiftystater)
 
-data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv")
+data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv", stringsAsFactors = FALSE)
 
 df <- read.csv(file = "./data/AllTimeStateDeathsWLocation.csv", sep = ",", stringsAsFactors = FALSE)
 df <- rename(df, state = State) # rename the State column to state

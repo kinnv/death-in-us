@@ -1,15 +1,7 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
+library(plotly)
 
 #install.packages("devtools")
 library(devtools)
@@ -19,7 +11,7 @@ if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
 }
 library(fiftystater)
 # Read in CSV Data
-data <- read.csv("data/NCHS_Leading_Causes_of_Death_United_States.csv")
+data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv", stringsAsFactors = FALSE)
 
 # Sorting data by years in descending order (for the select input in the first bar chart)
 attach(data) 
