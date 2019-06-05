@@ -3,9 +3,6 @@ library(plotly)
 library(dplyr)
 library(ggplot2)
 
-
-# Define server logic required to draw a histogram
-
 data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv")
 
 shinyServer(function(input, output) {
@@ -18,7 +15,7 @@ shinyServer(function(input, output) {
     dataframe <- data.frame(
       select(sort_years, Age.adjusted.Death.Rate, Year, Cause.Name, State) %>% filter(Year == input$year) %>% filter(Cause.Name == input$cause) %>% transmute(Age.adjusted.Death.Rate, State), stringsAsFactors = FALSE)
     plot_ly(dataframe, x = dataframe$State, y = dataframe$Age.adjusted.Death.Rate, type = 'bar', text = dataframe$Age.adjusted.Death.Rate, textposition = 'auto', marker = list(color = "#305f72")) %>% 
-      layout(title = paste0("Age Adjusted Death Rates per State"), xaxis = list(title = "States"), yaxis = list(title = "Age Adjusted Death Rates"))
+      layout(title = paste0("Age Adjusted Death Rates per State"), xaxis = list(title = "States"), yaxis = list(title = "Age Adjusted Death Rates (Per 100,000)"))
   })
   
   chosen_data <- reactive({
