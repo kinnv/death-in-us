@@ -149,7 +149,7 @@ my_ui <- shinyUI(navbarPage(
         h2(strong("Analysis")),
         h3("How do causes of death (on national level) change over time (if any)?"),
         br("Cancer and Heart Diseases are the obvious top two causes of death and both indicate worrying recent trends.
-           Deaths by cancer has been constantly on the rice for the past decade and a half and 
+           Deaths by cancer has been constantly on the rise for the past decade and a half and 
            this makes the search for a cure even more pressing. Deaths by heart diseases showed a dip throughout the 2000s,
            but have been back on the rise in this decade."),
         br("All other causes have generally been on the rise throughout the time period,
