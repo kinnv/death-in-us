@@ -130,26 +130,43 @@ my_ui <- shinyUI(navbarPage(
   #Panel to show map that shows total amount of deaths caused by specific causes of death in each state
   tabPanel(
     #title of panel
-    p(strong("Total Deaths by Specific Causes Per State")),
+    p(strong("Total Deaths by Causes Per State")),
     strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
     sidebarLayout(
       sidebarPanel(
         radioButtons("radio", label = h3("Cause of Death"),
-                     choices = list("Cancer" = "Cancer", "Heart Disease" = "HeartDisease",
-                                    "Suicide" = "Suicide", "Kidney Disease" = "KidneyDisease", 
-                                    "Stroke" = "Stroke", "CLRD" = "CLRD", "Unintentional Injuries"
-                                    = "UnintentionalInjuries",
-                                    "Alzheimer's Disease" = "AlzheimersDisease", 
-                                    "Influenza and Pneumonia" = "InfluenzaPneumonia", 
-                                    "Diabetes" = "Diabetes"), 
-                     selected = "Cancer"),
+                     choices = list("Suicide" = 3, "Heart Disease" = 2,
+                                    "Cancer" = 1, "Kidney Disease" = 4, 
+                                    "Stroke" = 5, "CLRD (Respitory)" = 6, "Unintentional Injuries"
+                                    = 7,
+                                    "Alzheimer's Disease" = 8, 
+                                    "Influenza and Pneumonia" = 9, 
+                                    "Diabetes" = 10), 
+                     selected = 3),
         
         hr(),
         fluidRow(column(3, verbatimTextOutput("value")))
         
       ),
       mainPanel(
-        plotOutput("fifty_map")
+        plotOutput("fifty_map"),
+        p(strong("Analysis")),
+        br("This map allows insight to regional trends in cause of death. There are some interesting 
+          regions that can be seen in each map. For instance, the Suicide Map shows an area just West
+          of the middle of the country that has very high suicide rates, once this trend reaches the 
+          West coast it stops."),
+        br("Another notable trend is that states with very large or very small populations (outliers)
+           tend to be the most different and stand out in the maps. For example, on the Suicide Map 
+           the large states of California and New York have very low relitve percentages of suicides, 
+           while the small population of Alaska is quite large."),
+        br(strong("Where are these numbers coming from?")),
+        br("All cases of the top ten leading causes of death in the United States from 1999 to 2016 
+           were added up to get the largest sample available. From these totals* a percentage is found 
+           for every state like. For example, the relative percentages for the Suicide Map is found by
+           taking the (total suicide deaths of the state) / (total* deaths from the state) * 100, 
+           and this is done for every state. It is worth noting that some of these rates can be quite
+           small (less than 1%) while others can be large(), based on the map being shown")
+        
       )
     )
   ),

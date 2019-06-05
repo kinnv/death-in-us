@@ -54,126 +54,156 @@ shinyServer(function(input, output) {
     
     state <- map_data("state")
     # full_join(state, df, by = c("region" = "state")) %>% View
-    if(input$radio == "Cancer"){
+    if(input$radio == 1){
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=Cancer/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Cancer Deaths per State of All Time")+
+        ggtitle("Relative Percentage of Cancer Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "Stroke") {
+      p$labels$fill <- "Relative Percentage of Cancer Deaths"
+    } else if(input$radio == 5) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=Stroke/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
         coord_map() +
-        ggtitle("Percentage of Stroke Deaths per State of All Time")+
+        ggtitle("Relative Percentage of Stroke Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "Suicide") {
+      p$labels$fill <- "Relative Percentage of Stroke Deaths"
+    } else if(input$radio == 3) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=Suicide/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
         coord_map() +
-        ggtitle("Percentage of Suicide Deaths per State of All Time")+
+        ggtitle("Relative Percentage of Suicide Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "HeartDisease") {
+      p$labels$fill <- "Relative Percentage of Suicide Deaths"
+    } else if(input$radio == 2) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=HeartDisease/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
         coord_map() +
-        ggtitle("Percentage of Heart Disease Deaths per State of All Time")+
+        ggtitle("Relative Percentage of Heart Disease Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "KidneyDisease") {
+      p$labels$fill <- "Relative Percentage of Heart Disease Deaths"
+    } else if(input$radio == 4) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=KidneyDisease/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Kidney Disease Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
+        ggtitle("Relative Percentage of Kidney Disease Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "CLRD") {
+      p$labels$fill <- "Relative Percentage of Kidney Disease Deaths"
+    } else if(input$radio == 6) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=CLRD/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
         coord_map() +
-        ggtitle("Percentage of CLRD Deaths per State of All Time")+
+        ggtitle("Relative Percentage of CLRD (Respitory) Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "UnintentionalInjuries" ) {
+      p$labels$fill <- "Relative Percentage of CLRD Deaths"
+    } else if(input$radio == 7 ) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=Cancer/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Unintentional Injury Caused Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
+        ggtitle("Relative Percentage of Unintentional Injury Caused Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "AlzheimersDisease") {
+      p$labels$fill <- "Relative Percentage of Injury Related Deaths"
+    } else if(input$radio == 8) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=AlzheimersDisease/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Alzheimer's Disease Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
+        ggtitle("Relative Percentage of Alzheimer's Disease Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "InfluenzaPneumonia") {
+      p$labels$fill <- "Relative Percentage of Alzheimer's Disease Deaths"
+    } else if(input$radio == 9) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=InfluenzaPneumonia/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Influenza and Pneumonia Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
+        ggtitle("Relative Percentage of Influenza and Pneumonia Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
-    } else if(input$radio == "Diabetes") {
+      p$labels$fill <- "Relative Percentage of Influenza/Pneumonia Deaths"
+    } else if(input$radio == 10) {
       p <- ggplot(df, aes(map_id = state)) +
         #   map points to the fifty_states shape data
         geom_map(aes(fill=Diabetes/AllCauses*100), map = fifty_states) +
         expand_limits(x = fifty_states$long, y = fifty_states$lat) +
         coord_map() +
-        ggtitle("Percentage of Diabetes Deaths per State of All Time")+
+        fifty_states_inset_boxes() +
+        scale_fill_gradient(low ='blue', high ='red') +
+        ggtitle("Relative Percentage of Diabetes Deaths per State of All Time")+
         scale_x_continuous(breaks = NULL) + 
         scale_y_continuous(breaks = NULL) +
         labs(x = "", y = "") +
         theme(legend.position = "bottom", 
               panel.background = element_blank())
+      p$labels$fill <- "Relative Percentage of Diabetes Deaths"
     }
     
     # p <- ggplot(df, aes(map_id = state)) +
