@@ -122,6 +122,17 @@ my_ui <- shinyUI(navbarPage(
     strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
     sidebarLayout(
       sidebarPanel(
+        radioButtons("radio", label = h3("Cause of Death"),
+                     choices = list("Cancer" = "Cancer", "Heart Disease" = "HeartDisease",
+                                    "Suicide" = "Suicide", "Kidney Disease" = "KidneyDisease", 
+                                    "Stroke" = "Stroke", "CLRD" = "CLRD", "Unintentional Injuries",
+                                    "Alzheimer's Disease" = "AlzheimersDisease", 
+                                    "Influenza and Pneumonia" = "InfluenzaPneumonia", 
+                                    "Diabetes" = "Diabetes"), 
+                     selected = "Cancer"),
+        
+        hr(),
+        fluidRow(column(3, verbatimTextOutput("value")))
         
       ),
       mainPanel(
