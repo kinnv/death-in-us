@@ -2,6 +2,8 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(ggplot2)
+install.packages("devtools")
+devtools::install_github("wmurphyrd/fiftystater")
 library(fiftystater)
 
 data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv")
@@ -25,6 +27,7 @@ shinyServer(function(input, output) {
       layout(title = paste0("Age Adjusted Death Rates per State"), xaxis = list(title = "States"), yaxis = list(title = "Age Adjusted Death Rates (Per 100,000)"))
   })
   
+  # Filter data for selected year range as well as cause name
   chosen_data <- reactive({
     data %>% 
       group_by(Year,Cause.Name) %>% 
@@ -34,6 +37,7 @@ shinyServer(function(input, output) {
              Year <= input$chosenYears[2])
   })
   
+  # Creates line graph of cause of death on a national level over time.
   output$lineGraph <- renderPlot({
     chosen_data() %>% 
       ggplot(aes(x = Year, y = Total, color = Cause.Name)) +
