@@ -71,7 +71,7 @@ my_ui <- shinyUI(navbarPage(
         p(strong("Goal Questions:")),
         br("1) What is the age adjusted death rate in each state for a specific cause of death in a given year?"),
         br("2) How do causes of death (on national level) change over time (if any)?"),
-        br("3) What are the regional trends and outliers for different casuses of death in each state?")
+        br("3) What are the regional trends and outliers for different causes of death in each state?")
         )
         )
   ), 
