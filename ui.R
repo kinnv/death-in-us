@@ -43,7 +43,7 @@ my_ui <- shinyUI(navbarPage(
         sidebarPanel(
           p(strong("About Us")),
           "We are current students at the University of Washington enrolled in INFO201. 
-           What consists of this webpage is our final project for the course.",
+           This webpage consists of our final project for the course.",
           tags$style(".well{background-color:lightblue;}"),
           hr(),
           p(strong("Contact Us")),
@@ -61,12 +61,12 @@ my_ui <- shinyUI(navbarPage(
         br(),
         p(strong("Our Data")),
         br("We are working with data from the National Center for Health Statistics (NCHS)."),
-        br("This data set contains data on the top leading cause of death and its death rate/age 
-            adjusted death rate in each state from 1999 to 2016."),
-        br("Our target audience are individuals who are interested in learning about the top leading 
+        br("This data set contains data on the leading causes of death along with the corresponding total number of deaths as well as the 
+            age adjusted death rate in each state from 1999 to 2016."),
+        br("Our target audience are individuals who are interested in learning about the leading 
             causes of deaths in the United States, whether it be by year, states, or as a nation.
-            We are hoping these individuals have a goal of using this data in order to figure out what
-            causes are most important to address in order to decrease death rate due to these causes."),
+            We are hoping these individuals have a goal of using this data in order to figure out 
+            how they can better maintain their physical well-being"),
         hr(),
         p(strong("Goal Questions:")),
         br("1) How many states have had a specific leading cause of death?"),
