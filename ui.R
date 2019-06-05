@@ -22,7 +22,7 @@ detach(data)
 my_ui <- shinyUI(navbarPage(
   
   #pagetheme
-  theme="journal",
+  theme=shinytheme("cosmo"),
   
   # Application title
   p(strong("Leading Causes of Death in the United States")),
@@ -31,36 +31,36 @@ my_ui <- shinyUI(navbarPage(
     p(strong("Summary of our Project")),
     sidebarLayout(
       sidebarPanel(
-        p(strong("About Us")),
+        h3(strong("About Us")),
         "We are current students at the University of Washington enrolled in INFO201. 
         This webpage consists of our final project for the course.",
         tags$style(".well{background-color:lightblue;}"),
         hr(),
-        p(strong("Contact Us")),
-        br("Kin Vong: ", a(href="mailto:klaivong@gmail.com", "klaivong@gmail.com")),
-        br("Connor Voelk:", a(href="mailto:connorvoelk@gmail.com", "connorvoelk@gmail.com")),
-        br("Yan Zhe Ong:", a(href="mailto:ongyanzhe@gmail.com", "ongyanzhe@gmail.com")),
-        br("Andrew Kats:", a(href="mailto:akats98@gmail.com", "akats98@gmail.com")) 
+        h3(strong("Contact Us")),
+        p("Kin Vong: ", a(href="mailto:klaivong@gmail.com", "klaivong@gmail.com")),
+        p("Connor Voelk:", a(href="mailto:connorvoelk@gmail.com", "connorvoelk@gmail.com")),
+        p("Yan Zhe Ong:", a(href="mailto:ongyanzhe@gmail.com", "ongyanzhe@gmail.com")),
+        p("Andrew Kats:", a(href="mailto:akats98@gmail.com", "akats98@gmail.com")) 
       ),
       
       #Summary of Analysis
       mainPanel(
-        img(src = "uw.jpg", width = "900px", height = "150px"),
+        img(src = "uw.jpg", width = 925, height = 275),
         br(),
         br(),
-        p(strong("Our Data")),
-        br("We are working with data from the National Center for Health Statistics (NCHS)."),
-        br("This data set contains data on the leading causes of death along with the corresponding total number of deaths as well as the 
+        h3(strong("Our Data")),
+        p("We are working with data from the National Center for Health Statistics (NCHS)."),
+        p("This data set contains data on the leading causes of death along with the corresponding total number of deaths as well as the 
             age adjusted death rate in each state from 1999 to 2016."),
-        br("Our target audience are individuals who are interested in learning about the leading 
+        p("Our target audience are individuals who are interested in learning about the leading 
             causes of deaths in the United States, whether it be by year, states, or as a nation.
             We are hoping these individuals have a goal of using this data in order to figure out 
             how they can better maintain their physical well-being"),
         hr(),
-        p(strong("Goal Questions:")),
-        br("1) What is the age adjusted death rate in each state for a specific cause of death in a given year?"),
-        br("2) How do causes of death (on national level) change over time (if any)?"),
-        br("3) What are the regional trends and outliers for different causes of death in each state?")
+        h3(strong("Goal Questions:")),
+        p("1) What is the age adjusted death rate in each state for a specific cause of death in a given year?"),
+        p("2) How do causes of death (on national level) change over time (if any)?"),
+        p("3) What are the regional trends and outliers for different causes of death in each state?")
         )
         )
   ), 
@@ -72,6 +72,7 @@ my_ui <- shinyUI(navbarPage(
     p(strong("Causes Per State")),
     strong("This bar chart compares age adjusted death rates for 
            every state for specific causes of death in a given year"),
+    hr(),
     sidebarLayout(
       
       # Creates widget to allow the user to sort by causes of death
@@ -94,7 +95,7 @@ my_ui <- shinyUI(navbarPage(
       mainPanel(
         plotlyOutput("chart"),
         hr(),
-        h2(strong("Analysis")),
+        h3(strong("Analysis")),
         h3("What is the age adjusted death rate for a cause of death for each state in a given year?"),
         br("This bar chart allows analysis of the age adjusted death rate (per 100,000) for a cause of death 
            for every state in a given year. This bar chart allows you to compare adjusted death rates for every 
@@ -119,6 +120,7 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("National Deaths by Individual Causes Overtime")),
     strong("This line graph shows the national deaths by individual leading causes of death overtime."),
+    hr(),
     sidebarLayout(
       sidebarPanel(
         selectInput("chosenCauses",
@@ -138,7 +140,7 @@ my_ui <- shinyUI(navbarPage(
       mainPanel(
         plotOutput("lineGraph"),
         hr(),
-        h2(strong("Analysis")),
+        h3(strong("Analysis")),
         h3("How do causes of death (on national level) change over time (if any)?"),
         br("Cancer and Heart Diseases are the obvious top two causes of death and both indicate worrying recent trends.
            Deaths by cancer has been constantly on the rise for the past decade and a half and 
@@ -163,6 +165,7 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("Total Deaths by Causes Per State")),
     strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
+    hr(),
     sidebarLayout(
       sidebarPanel(
         radioButtons("radio", label = h3("Cause of Death"),
@@ -181,7 +184,7 @@ my_ui <- shinyUI(navbarPage(
       mainPanel(
         plotOutput("fifty_map"),
         hr(),
-        h2(strong("Analysis")),
+        h3(strong("Analysis")),
         h3("What are the regional trends and outliers for different casuses of death in each state?"),
         br("This map allows insight to regional trends in cause of death. There are some interesting 
            regions that can be seen in each map. For instance, the Suicide Map shows an area just West
