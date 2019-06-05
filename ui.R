@@ -106,7 +106,7 @@ my_ui <- shinyUI(navbarPage(
         plotlyOutput("chart"),
         h2(strong("Analysis")),
         h3("What is the age adjusted death rate for a cause of death for each state in a given year?"),
-        br("This bar chart allows analysis of the age adjusted death rate (per 100,00) for a cause of death 
+        br("This bar chart allows analysis of the age adjusted death rate (per 100,000) for a cause of death 
            for every state in a given year. This bar chart allows you to compare adjusted death rates for every 
            state for a cause of death in a specific year and allows you to see the change of age adjusted death 
            rates over time. For example, the age adjusted death rate in Alabama for cancer in 1999 was 211 deaths 
