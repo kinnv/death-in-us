@@ -2,9 +2,9 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(ggplot2)
-library(devtools)
+
 #install.packages("devtools")
-#devtools::install_github("wmurphyrd/fiftystater")
+library(devtools)
 
 if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("wmurphyrd/fiftystater")

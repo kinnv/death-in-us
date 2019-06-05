@@ -10,12 +10,10 @@
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
-library(plotly)
 
-if("devtools" %in% rownames(installed.packages()) == FALSE) {
-  install.packages("devtools")
-}
+#install.packages("devtools")
 library(devtools)
+
 if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("wmurphyrd/fiftystater")
 }
