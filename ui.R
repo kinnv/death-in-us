@@ -10,6 +10,15 @@
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
+library(plotly)
+
+# Read in CSV Data
+deaths <- read.csv("data/NCHS_Leading_Causes_of_Death_United_States.csv")
+
+# Sorting data by years in descending order (for the select input in the first bar chart)
+attach(deaths) 
+sort_years <- deaths[order(-Year),] 
+detach(deaths) 
 
 # Define UI for application that draws a histogram
 my_ui <- shinyUI(navbarPage(
@@ -57,21 +66,36 @@ my_ui <- shinyUI(navbarPage(
         br("3) What are the all time leading causes of death in each state?")
       )
     )
-    ),
+    ), 
 
   
   #Panel to show histogram that compares how many state have had a specific cause as their leading cause of death per year
   tabPanel(
     #title of panel
     p(strong("Causes Per State")),
-    strong("This histogram compares how many states have had a specific cause of death
-           as their leading cause of death per year."),
+    strong("This bar chart compares age adjusted death rates for 
+            every state for specific causes of death in a given year"),
     sidebarLayout(
+      
+      # Creates widget to allow the user to sort by causes of death
       sidebarPanel(
+        selectInput(
+          inputId = "cause",
+          label = "Cause of Death",
+          selected = "All causes",
+          choices = sort_years$Cause.Name
+        ),
         
+        # Creates widget to allow user to sort by year
+        selectInput(
+          inputId = "year",
+          label = "Year",
+          selected = "1999",
+          choices = sort_years$Year
+        )
       ),
       mainPanel(
-        
+        plotlyOutput("chart")  
       )
     )
   ),
