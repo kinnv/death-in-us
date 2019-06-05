@@ -12,6 +12,14 @@ library(shinythemes)
 library(shinyWidgets)
 library(plotly)
 
+if("devtools" %in% rownames(installed.packages()) == FALSE) {
+  install.packages("devtools")
+}
+library(devtools)
+if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
+  devtools::install_github("wmurphyrd/fiftystater")
+}
+library(fiftystater)
 # Read in CSV Data
 data <- read.csv("data/NCHS_Leading_Causes_of_Death_United_States.csv")
 
