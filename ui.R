@@ -137,7 +137,8 @@ my_ui <- shinyUI(navbarPage(
         radioButtons("radio", label = h3("Cause of Death"),
                      choices = list("Cancer" = "Cancer", "Heart Disease" = "HeartDisease",
                                     "Suicide" = "Suicide", "Kidney Disease" = "KidneyDisease", 
-                                    "Stroke" = "Stroke", "CLRD" = "CLRD", "Unintentional Injuries",
+                                    "Stroke" = "Stroke", "CLRD" = "CLRD", "Unintentional Injuries"
+                                    = "UnintentionalInjuries",
                                     "Alzheimer's Disease" = "AlzheimersDisease", 
                                     "Influenza and Pneumonia" = "InfluenzaPneumonia", 
                                     "Diabetes" = "Diabetes"), 
@@ -148,7 +149,7 @@ my_ui <- shinyUI(navbarPage(
         
       ),
       mainPanel(
-        
+        plotOutput("fifty_map")
       )
     )
   ),
