@@ -166,7 +166,7 @@ my_ui <- shinyUI(navbarPage(
            for every state regarding each leading cause. For example, the relative percentages for the Suicide Map is found by
            taking the (total suicide deaths of the state) / (total deaths from the state) * 100, 
            and this is done for every state. It is worth noting that some of these rates can be quite
-           small (less than 1%) while others can be large (Above 30%), based on the map being shown")
+           small (less than 1%) while others can be large (Above 30%), based on the map being shown.")
         
         
       )
