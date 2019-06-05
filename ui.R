@@ -43,7 +43,7 @@ my_ui <- shinyUI(navbarPage(
         sidebarPanel(
           p(strong("About Us")),
           "We are current students at the University of Washington enrolled in INFO201. 
-           This webpage consists of our final project for the course.",
+           What consists of this webpage is our final project for the course.",
           tags$style(".well{background-color:lightblue;}"),
           hr(),
           p(strong("Contact Us")),
@@ -61,12 +61,12 @@ my_ui <- shinyUI(navbarPage(
         br(),
         p(strong("Our Data")),
         br("We are working with data from the National Center for Health Statistics (NCHS)."),
-        br("This data set contains data on the leading causes of death along with the corresponding total number of deaths as well as the 
-            age adjusted death rate in each state from 1999 to 2016."),
-        br("Our target audience are individuals who are interested in learning about the leading 
+        br("This data set contains data on the top leading cause of death and its death rate/age 
+            adjusted death rate in each state from 1999 to 2016."),
+        br("Our target audience are individuals who are interested in learning about the top leading 
             causes of deaths in the United States, whether it be by year, states, or as a nation.
-            We are hoping these individuals have a goal of using this data in order to figure out 
-            how they can better maintain their physical well-being"),
+            We are hoping these individuals have a goal of using this data in order to figure out what
+            causes are most important to address in order to decrease death rate due to these causes."),
         hr(),
         p(strong("Goal Questions:")),
         br("1) How many states have had a specific leading cause of death?"),
@@ -83,9 +83,8 @@ my_ui <- shinyUI(navbarPage(
     p(strong("Causes Per State")),
     strong("This bar chart compares age adjusted death rates for 
             every state for specific causes of death in a given year"),
-    hr(),
-    
     sidebarLayout(
+      
       # Creates widget to allow the user to sort by causes of death
       sidebarPanel(
         selectInput(
@@ -114,8 +113,6 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("National Deaths by Individual Causes Overtime")),
     strong("This line graph shows the national deaths by individual leading causes of death overtime."),
-    hr(),
-    
     sidebarLayout(
       sidebarPanel(
         selectInput("chosenCauses",
@@ -133,23 +130,7 @@ my_ui <- shinyUI(navbarPage(
                     step = 1)  
       ),
       mainPanel(
-        plotOutput("lineGraph"),
-        hr(),
-        p(strong("Analysis")),
-        br("Cancer and Heart Diseases are the obvious top two causes of death and both indicate worrying recent trends.
-           Deaths by cancer has been constantly on the rice for the past decade and a half and 
-           this makes the search for a cure even more pressing. Deaths by heart diseases showed a dip throughout the 2000s,
-           but have been back on the rise in this decade."),
-        br("All other causes have generally been on the rise throughout the time period,
-           which does not bode well for American Health.
-           It is interesting to note that Deaths by Stroke also took a dip throughout the whole 2000s,
-           but is back on the rise again this decade, similar to the number of deaths due to heart disease.
-           This confirms what we already know that deaths by heart diseases and stroke is often correlated."),
-        hr(),
-        br(strong("Where are these numbers coming from?")),
-        br("Depending on the date range chosen by the user, the data will change.
-           The user can has delete certain causes that are distorting the graph, for example, cancer and heart diseases,
-           and focus on causes that they are more interested in.")
+        plotOutput("lineGraph")
       )
     )
   ),
@@ -159,8 +140,6 @@ my_ui <- shinyUI(navbarPage(
     #title of panel
     p(strong("Total Deaths by Causes Per State")),
     strong("This map shows the total amount of deaths caused by specific causes of death in each state."),
-    hr(),
-    
     sidebarLayout(
       sidebarPanel(
         radioButtons("radio", label = h3("Cause of Death"),
@@ -178,15 +157,9 @@ my_ui <- shinyUI(navbarPage(
       ),
       mainPanel(
         plotOutput("fifty_map"),
-<<<<<<< HEAD
         h2(strong("Analysis")),
         h3("What are the regional trends and outliers for different casuses of death in each state?"),
-        p("This map allows insight to regional trends in cause of death. There are some interesting 
-=======
-        hr(),
-        p(strong("Analysis")),
         br("This map allows insight to regional trends in cause of death. There are some interesting 
->>>>>>> 0995b05b925985399c2e17a3d2cc370083916775
           regions that can be seen in each map. For instance, the Suicide Map shows an area just West
           of the middle of the country that has very high suicide rates, once this trend reaches the 
           West coast it stops."),
@@ -195,8 +168,8 @@ my_ui <- shinyUI(navbarPage(
            the large states of California and New York have very low relitve percentages of suicides, 
            while the small population of Alaska is quite large."),
         hr(),
-        h3(strong("Where are these numbers coming from?")),
-        p("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
+        p(strong("Where are these numbers coming from?")),
+        br("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
            were added up to get the largest sample available. From these totals a percentage is found 
            for every state regarding each leading cause. For example, the relative percentages for the Suicide Map is found by
            taking the (total suicide deaths of the state) / (total deaths from the state) * 100, 
