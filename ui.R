@@ -43,13 +43,12 @@ my_ui <- shinyUI(navbarPage(
       sidebarPanel(
         p(strong("About Us")),
         "We are current students at the University of Washington enrolled in INFO201. 
-        What consists of this webpage is our final project for the course.",
+        This webpage consists of our final project for the course.",
         tags$style(".well{background-color:lightblue;}"),
         hr(),
         p(strong("Contact Us")),
         br("Kin Vong: ", a(href="mailto:klaivong@gmail.com", "klaivong@gmail.com")),
-        br("Connor Voelk:"), a(href="mailto:connorvoelk@gmail.com", "connorvoelk@gmail.com"),
-        br(),
+        br("Connor Voelk:", a(href="mailto:connorvoelk@gmail.com", "connorvoelk@gmail.com")),
         br("Yan Zhe Ong:", a(href="mailto:ongyanzhe@gmail.com", "ongyanzhe@gmail.com")),
         br("Andrew Kats:", a(href="mailto:akats98@gmail.com", "akats98@gmail.com")) 
       ),
@@ -61,12 +60,12 @@ my_ui <- shinyUI(navbarPage(
         br(),
         p(strong("Our Data")),
         br("We are working with data from the National Center for Health Statistics (NCHS)."),
-        br("This data set contains data on the top leading cause of death and its death rate/age 
-           adjusted death rate in each state from 1999 to 2016."),
-        br("Our target audience are individuals who are interested in learning about the top leading 
-           causes of deaths in the United States, whether it be by year, states, or as a nation.
-           We are hoping these individuals have a goal of using this data in order to figure out what
-           causes are most important to address in order to decrease death rate due to these causes."),
+        br("This data set contains data on the leading causes of death along with the corresponding total number of deaths as well as the 
+            age adjusted death rate in each state from 1999 to 2016."),
+        br("Our target audience are individuals who are interested in learning about the leading 
+            causes of deaths in the United States, whether it be by year, states, or as a nation.
+            We are hoping these individuals have a goal of using this data in order to figure out 
+            how they can better maintain their physical well-being"),
         hr(),
         p(strong("Goal Questions:")),
         br("1) What is the age adjusted death rate in each state for a specific cause of death in a given year?"),
@@ -104,6 +103,7 @@ my_ui <- shinyUI(navbarPage(
       ),
       mainPanel(
         plotlyOutput("chart"),
+        hr(),
         h2(strong("Analysis")),
         h3("What is the age adjusted death rate for a cause of death for each state in a given year?"),
         br("This bar chart allows analysis of the age adjusted death rate (per 100,000) for a cause of death 
@@ -114,13 +114,12 @@ my_ui <- shinyUI(navbarPage(
            insight into things like the overall impact of healthcare improvement and how successful improvements of healthcare 
            have been in each individual state. "),
         hr(),
-        p(strong("Where are these numbers coming from?")),
+        h3("Where are these numbers coming from?"),
         br("This chart analyzes age adjusted death rates for the top 10 leading causes of death in every state from 1999 
            to 2016. The age adjusted death rate is the death rate for individual causes of death when age as a confounder 
            is considered. The reason why the age adjusted death rate is so much smaller than the total deaths for these 
            causes in a lot of cases (as you can see in the graph under the National Deaths by Induvial Causes Overtime tab), 
            is because age is an important factor for a lot of these causes of death. ")
-        
       )
     )
     ),
@@ -147,7 +146,24 @@ my_ui <- shinyUI(navbarPage(
                     step = 1)  
       ),
       mainPanel(
-        plotOutput("lineGraph")
+        plotOutput("lineGraph"),
+        hr(),
+        h2(strong("Analysis")),
+        h3("How do causes of death (on national level) change over time (if any)?"),
+        br("Cancer and Heart Diseases are the obvious top two causes of death and both indicate worrying recent trends.
+           Deaths by cancer has been constantly on the rice for the past decade and a half and 
+           this makes the search for a cure even more pressing. Deaths by heart diseases showed a dip throughout the 2000s,
+           but have been back on the rise in this decade."),
+        br("All other causes have generally been on the rise throughout the time period,
+           which does not bode well for American Health.
+           It is interesting to note that Deaths by Stroke also took a dip throughout the whole 2000s,
+           but is back on the rise again this decade, similar to the number of deaths due to heart disease.
+           This confirms what we already know that deaths by heart diseases and stroke is often correlated."),
+        hr(),
+        h3("Where are these numbers coming from?"),
+        br("Depending on the date range chosen by the user, the data will change.
+           The user can has delete certain causes that are distorting the graph, for example, cancer and heart diseases,
+           and focus on causes that they are more interested in.")
       )
     )
   ),
@@ -174,6 +190,7 @@ my_ui <- shinyUI(navbarPage(
       ),
       mainPanel(
         plotOutput("fifty_map"),
+        hr(),
         h2(strong("Analysis")),
         h3("What are the regional trends and outliers for different casuses of death in each state?"),
         br("This map allows insight to regional trends in cause of death. There are some interesting 
@@ -185,15 +202,13 @@ my_ui <- shinyUI(navbarPage(
            the large states of California and New York have very low relitve percentages of suicides, 
            while the small population of Alaska is quite large."),
         hr(),
-        p(strong("Where are these numbers coming from?")),
+        h3("Where are these numbers coming from?"),
         br("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
            were added up to get the largest sample available. From these totals a percentage is found 
            for every state regarding each leading cause. For example, the relative percentages for the Suicide Map is found by
            taking the (total suicide deaths of the state) / (total deaths from the state) * 100, 
            and this is done for every state. It is worth noting that some of these rates can be quite
            small (less than 1%) while others can be large (Above 30%), based on the map being shown.")
-        
-        
         )
         )
         ),
