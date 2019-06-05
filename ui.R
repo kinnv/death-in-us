@@ -185,7 +185,7 @@ my_ui <- shinyUI(navbarPage(
            the large states of California and New York have very low relitve percentages of suicides, 
            while the small population of Alaska is quite large."),
         hr(),
-        p(strong("Where are these numbers coming from?")),
+        h3(strong("Where are these numbers coming from?")),
         br("All cases of the top ten leading causes of death and all causes of death in the United States from 1999 to 2016 
            were added up to get the largest sample available. From these totals a percentage is found 
            for every state regarding each leading cause. For example, the relative percentages for the Suicide Map is found by
