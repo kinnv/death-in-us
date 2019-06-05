@@ -2,8 +2,13 @@ library(shiny)
 library(plotly)
 library(dplyr)
 library(ggplot2)
+library(devtools)
 #install.packages("devtools")
 #devtools::install_github("wmurphyrd/fiftystater")
+
+if("fiftystater" %in% rownames(installed.packages()) == FALSE) {
+  devtools::install_github("wmurphyrd/fiftystater")
+} 
 library(fiftystater)
 
 data <- read.csv("./data/NCHS_Leading_Causes_of_Death_United_States.csv")
